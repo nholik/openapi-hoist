@@ -1,4 +1,32 @@
 {
   "name": "openapi-hoist",
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@3.6.1",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc",
+    "build": "yarn clean && yarn build:esm && yarn build:cjs",
+    "clean": "rimraf dist",
+    "lint": "eslint ./src --ext .ts"
+  },
+  "devDependencies": {
+    "@tsconfig/esm": "^1.0.4",
+    "@tsconfig/node20": "^20.1.0",
+    "@tsconfig/strictest": "^2.0.1",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "prettier": "^3.0.0",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6",
+    "vitest": "^0.33.0"
+  },
+  "dependencies": {
+    "@apidevtools/swagger-parser": "^10.1.0"
+  },
+  "volta": {
+    "node": "20.5.0",
+    "yarn": "3.6.1"
+  }
 }

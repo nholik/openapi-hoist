@@ -1,5 +1,5 @@
 import { type RefGrouping, type PotentialRef } from "./types";
-import { OpenAPIV3_1 } from "openapi-types";
+import { type OpenAPIV3_1 } from "openapi-types";
 import pluralize from "pluralize";
 import { isEqual, set, cloneDeep } from "lodash";
 
@@ -88,7 +88,7 @@ export const applyRefs = (
   for (const refgrp of refGroups) {
     for (const path of refgrp.paths) {
       set(updatedDoc.paths, path.slice(0, -1), {
-        $ref: `#components/schemas/${refgrp.name}`,
+        $ref: `#/components/schemas/${refgrp.name}`,
       });
     }
 

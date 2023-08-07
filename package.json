@@ -1,6 +1,5 @@
 {
   "name": "openapi-hoist",
-  "packageManager": "yarn@3.6.1",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",

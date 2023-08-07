@@ -1,5 +1,6 @@
+import { writeFile } from "node:fs/promises";
 import SwaggerParser from "@apidevtools/swagger-parser";
-import { OpenAPIV3_1 } from "openapi-types";
+import { type OpenAPIV3_1 } from "openapi-types";
 import { applyRefs, findPotentialRefs, groupRefs } from "./util.js";
 
 const main = async () => {
@@ -10,6 +11,8 @@ const main = async () => {
     const refGroups = groupRefs(results);
     const updatedDoc = applyRefs(doc as OpenAPIV3_1.Document, refGroups);
     console.log(updatedDoc);
+    const blah = JSON.stringify(updatedDoc, null, 2);
+    await writeFile("./test-specs/book-refs.json", blah);
   } catch (e) {
     console.error(e);
   }
